@@ -1,5 +1,4 @@
 import os
-import csv
 
 def getData(file):
 #Input: file name
@@ -13,10 +12,18 @@ def getData(file):
 
 	#Your code here:
 	read_file = open(file, 'r')
-	file_lines = read_file.readlines()
 	lst = []
-	for line in file_lines.split(','):
-		lst.append(line)
+	dic = {}
+	for line in read_file:
+		line = line.split(',')
+		dic['First'] = line[0]
+		dic['Last'] = line[1]
+		dic['Email'] = line[2]
+		dic['Class'] = line[3]
+		dic['DOB'] = line[4]
+		lst.append(dic)
+	return lst
+
 
 
 
