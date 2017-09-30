@@ -1,4 +1,5 @@
 import os
+import csv
 
 def getData(file):
 #Input: file name
@@ -13,18 +14,17 @@ def getData(file):
 	#Your code here:
 	read_file = open(file, 'r')
 	lst = []
-	dic = {}
-	for line in read_file:
+	for line in read_file.readlines()[1:]:
+		dic = {}
 		line = line.split(',')
 		dic['First'] = line[0]
 		dic['Last'] = line[1]
 		dic['Email'] = line[2]
 		dic['Class'] = line[3]
-		dic['DOB'] = line[4]
+		dic['DOB'] = line[4].strip()
 		lst.append(dic)
+	#print(lst)
 	return lst
-
-
 
 
 #Sort based on key/column
@@ -33,7 +33,10 @@ def mySort(data,col):
 #Output: Return a string of the form firstName lastName
 
 	#Your code here:
-	pass
+	sorted_data = sorted(data, key = lambda x: x[col])
+	#print(type(sorted_data))
+	return sorted_data[0]['First'] + ' ' + sorted_data[0]['Last']
+
 
 #Create a histogram
 def classSizes(data):
