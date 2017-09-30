@@ -1,5 +1,5 @@
 import os
-import csv
+import filecmp
 
 def getData(file):
 #Input: file name
@@ -34,9 +34,7 @@ def mySort(data,col):
 
 	#Your code here:
 	sorted_data = sorted(data, key = lambda x: x[col])
-	#print(type(sorted_data))
 	return sorted_data[0]['First'] + ' ' + sorted_data[0]['Last']
-
 
 #Create a histogram
 def classSizes(data):
@@ -102,7 +100,7 @@ def main():
 	print("Read in Test data and store as a list of dictionaries")
 	data = getData('P1DataA.csv')
 	data2 = getData('P1DataB.csv')
-	total += test(type(data),type([]),35)
+	total += test(type(data),type([]),40)
 	print()
 	print("First student sorted by First name:")
 	total += test(mySort(data,'First'),'Abbot Le',15)
