@@ -1,5 +1,6 @@
 import os
 import filecmp
+from datetime import date
 
 def getData(file):
 #Input: file name
@@ -105,7 +106,23 @@ def findAge(a):
 # most often seen in the DOB
 
 	#Your code here:
-	pass
+	year = []
+	ages = []
+	count = 0
+	for date in a:
+		birthday = date['DOB']
+		year_born = birthday[-4:]
+		years = int(year_born)
+		year.append(years)
+	for date in year:
+		age = 2017 - date
+		ages.append(age)
+	for elem in ages:
+		count += elem
+	average_age = count // len(ages)
+	return average_age
+
+
 
 #Similar to mySort, but instead of returning single
 #Student, all of the sorted data is saved to a csv file.
