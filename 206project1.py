@@ -1,6 +1,5 @@
 import os
 import filecmp
-from datetime import date
 
 def getData(file):
 #Input: file name
@@ -131,7 +130,13 @@ def mySortPrint(a,col,fileName):
 #Output: None
 
 	#Your code here:
-	pass
+	sorted_data = sorted(a, key = lambda x: x[col])
+	#print(sorted_data)
+	csv_file = open(fileName, 'w')
+	for data in sorted_data:
+		csv_file.write('{}, {}, {}\n'.format(data['First'], data['Last'], data['Email']))
+	csv_file.close()
+
 
 
 
