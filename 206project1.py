@@ -134,7 +134,7 @@ def mySortPrint(a,col,fileName):
 	#print(sorted_data)
 	csv_file = open(fileName, 'w')
 	for data in sorted_data:
-		csv_file.write('{}, {}, {}\n'.format(data['First'], data['Last'], data['Email']))
+		csv_file.write('{},{},{}\n'.format(data['First'], data['Last'], data['Email']))
 	csv_file.close()
 
 
