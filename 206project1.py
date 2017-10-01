@@ -36,6 +36,7 @@ def mySort(data,col):
 	sorted_data = sorted(data, key = lambda x: x[col])
 	return sorted_data[0]['First'] + ' ' + sorted_data[0]['Last']
 
+
 #Create a histogram
 def classSizes(data):
 # Input: list of dictionaries
@@ -44,7 +45,32 @@ def classSizes(data):
 # [('Senior', 26), ('Junior', 25), ('Freshman', 21), ('Sophomore', 18)]
 
 	#Your code here:
-	pass
+	fresh = 0
+	soph = 0
+	jun = 0
+	senior = 0
+	for dic in data:
+		if dic['Class'] == 'Freshman':
+			fresh += 1
+		if dic['Class'] == 'Sophomore':
+			soph += 1
+		if dic['Class'] == 'Junior':
+			jun += 1
+		if dic['Class'] == 'Senior':
+			senior += 1
+	lst = []
+	fresh_tuple = ('Freshman', fresh)
+	lst.append(fresh_tuple)
+	soph_tuple = ('Sophomore', soph)
+	lst.append(soph_tuple)
+	jun_tuple = ('Junior', jun)
+	lst.append(jun_tuple)
+	senior_tuple = ('Senior', senior)
+	lst.append(senior_tuple)
+
+	sorted_lst = sorted(lst, key = lambda x: x[1], reverse = True)
+	return sorted_lst
+
 
 
 
@@ -55,7 +81,21 @@ def findDay(a):
 # most often seen in the DOB
 
 	#Your code here:
-	pass
+	day_count = {}
+	for day in a:
+		birthday = day['DOB']
+		day = birthday.split('/')
+		num = day[1]
+		if num not in day_count:
+			day_count[num] = 1
+		else:
+			day_count[num] += 1
+	day_lst = []
+	for key in day_count.keys():
+		day_tup = (key, day_count[key])
+		day_lst.append(day_tup)
+	sorted_lst = sorted(day_lst, key = lambda x: x[1], reverse = True)
+	return int(sorted_lst[0][0])
 
 
 # Find the average age (rounded) of the Students
